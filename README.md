@@ -22,3 +22,5 @@ Read more at https://makecode.microbit.org/packages/build-your-own
 * for PXT/microbit
 (The metadata above is needed for package search.)
 
+Original library for connecting servos to microbit:
+ https://github.com/DFRobot/pxt-motor
