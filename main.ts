@@ -69,9 +69,9 @@ input.onButtonPressed(Button.B, function () {
         case 3: maks_kat = 120; break //serwo 6
         case 4: maks_kat = 180; break //serwo 5
         case 5: maks_kat = 30; break //serwo 4 - szczeki
-        case 6: maks_kat = 180; break //serwo 3 - lewy roboczy
-        case 7: maks_kat = 180; break //serwo 2 - baza
-        case 8: maks_kat = 180; break //serwo 1 - prawy roboczy
+        case 6: maks_kat = 40; break //serwo 3 - lewy roboczy
+        case 7: maks_kat = 70; break //serwo 2 - baza
+        case 8: maks_kat = 50; break //serwo 1 - prawy roboczy
         default: maks_kat = 30;
     }
     if (DebugOn == 1) {
