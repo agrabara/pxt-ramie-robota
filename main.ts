@@ -104,6 +104,7 @@ function CmdInit() {
     KatSerwaS = 80
     NumerSerwaB = SERV_B
     KatSerwaB = 90
+    if (DebugMode) basic.showString("Init")
 
     Servo.Servo(0, 90)
     Servo.Servo(1, 90)
@@ -416,14 +417,14 @@ radio.onReceivedValue(function (Cmd: string, CmdValue: number) {
     if (Cmd.charAt(0) == '#') CmdDisplay(Cmd)
     if (Cmd == CMD_LEFT) CmdLeft()
     if (Cmd == CMD_RIGHT) CmdRight()
-    if (Cmd == CMD_UP) CmdRight()
-    if (Cmd == CMD_DOWN) CmdRight()
-    if (Cmd == CMD_OPEN) CmdRight()
-    if (Cmd == CMD_CLOSE) CmdRight()
-    if (Cmd == CMD_INIT) CmdRight()
-    if (Cmd == CMD_NEXTSERVO) CmdRight()
-    if (Cmd == CMD_INC_ANGLE) CmdRight()
-    if (Cmd == CMD_DEC_ANGLE) CmdRight()
+    if (Cmd == CMD_UP) CmdUp()
+    if (Cmd == CMD_DOWN) CmdDown()
+    if (Cmd == CMD_OPEN) CmdOpen()
+    if (Cmd == CMD_CLOSE) CmdClose()
+    if (Cmd == CMD_INIT) CmdInit()
+    if (Cmd == CMD_NEXTSERVO) CmdNextServo()
+    if (Cmd == CMD_INC_ANGLE) CmdIncAngle()
+    if (Cmd == CMD_DEC_ANGLE) CmdDecAngle()
     if (Cmd == CMD_CHGGROUP) CmdChangeRadioGroup(ON, CmdValue)
     if (Cmd == CMD_DSPICON) CmdDspIcon(CmdValue)
 })
