@@ -94,8 +94,8 @@ let NumerSerwa = 13
 let KatSerwa = 90
 
 function CmdInit() {
-// ustawiamy w pozycji "połowa" - przyda się w kalibracji
-// należy zdjąć ramię serwa i nałożyć je w mniej więcj połowie zakresu roboczego
+    // ustawiamy w pozycji "połowa" - przyda się w kalibracji
+    // należy zdjąć ramię serwa i nałożyć je w mniej więcj połowie zakresu roboczego
     NumerSerwaL = SERV_L
     KatSerwaL = 20
     NumerSerwaP = SERV_P
@@ -227,62 +227,62 @@ function CmdNextServo() {
 
 function CmdDown() {
 
-    for (let i = 0; i < 110; i++) {
+    for (let i = 0; i < 24; i++) {
 
-        KatSerwaP += 1
+        KatSerwaP += 5
         if (KatSerwaP > MAX_SERV_P) KatSerwaP = MAX_SERV_P
         if (DebugMode) basic.showNumber(Math.round(KatSerwaP / 10))
-        KatSerwaL -= SERV_STEP
+        KatSerwaL -= 5
         //ponizej jest +40 aby ograniczyć ruchomość serwo aby za bardzo nie opadło
-        if (KatSerwaL < MIN_SERV_L + 40) KatSerwaL = MIN_SERV_L + 40 
+        if (KatSerwaL < MIN_SERV_L + 40) KatSerwaL = MIN_SERV_L + 40
         if (DebugMode) basic.showNumber(Math.round(KatSerwaL / 10))
         Servo.Servo(SERV_P, KatSerwaP) //prawy   -  20->140
         Servo.Servo(SERV_L, KatSerwaL) //lewy    -  20->100
-        basic.pause(30)
+        basic.pause(50)
     }
     LastCmd = CMD_DOWN
 }
 
 
 function CmdUp() {
-    for (let i = 0; i < 110; i++) {
+    for (let i = 0; i < 24; i++) {
 
-        KatSerwaL += 1
+        KatSerwaL += 5
         if (KatSerwaL > MAX_SERV_L) KatSerwaL = MAX_SERV_L
         if (DebugMode) basic.showNumber(Math.round(KatSerwaL / 10))
-        KatSerwaP -= SERV_STEP
-        if (KatSerwaP < MIN_SERV_P) KatSerwaL = MIN_SERV_P
+        KatSerwaP -= 5
+        if (KatSerwaP < MIN_SERV_P) KatSerwaP = MIN_SERV_P
         if (DebugMode) basic.showNumber(Math.round(KatSerwaP / 10))
         Servo.Servo(SERV_P, KatSerwaP) //prawy   -  20->140
         Servo.Servo(SERV_L, KatSerwaL) //lewy    -  20->100
-        basic.pause(30)
+        basic.pause(50)
     }
     LastCmd = CMD_UP
 }
 
 function CmdOpen() {
-    for (let i = 0; i < 20; i++) {
-        KatSerwaS -= 1
+    for (let i = 0; i < 10; i++) {
+        KatSerwaS -= 2
         if (KatSerwaS < MIN_SERV_S) KatSerwaS = MIN_SERV_S
         if (DebugMode) basic.showNumber(Math.round(KatSerwaS / 10))
         Servo.Servo(SERV_S, KatSerwaS) //szczęki -  80->100
-        basic.pause(50)
+        basic.pause(100)
     }
     LastCmd = CMD_OPEN
 }
 
 function CmdClose() {
-    for (let i = 0; i < 20; i++) {
-        KatSerwaS += 1
+    for (let i = 0; i < 10; i++) {
+        KatSerwaS += 2
         if (KatSerwaS > MAX_SERV_S) KatSerwaS = MAX_SERV_S
         if (DebugMode) basic.showNumber(Math.round(KatSerwaS / 10))
         Servo.Servo(SERV_S, KatSerwaS) //szczęki -  80->100
-        basic.pause(50)
+        basic.pause(100)
     }
     LastCmd = CMD_CLOSE
 }
 
-function CmdLeft() {
+function CmdRight() {
     for (let i = 0; i < 130; i++) {
         KatSerwaB -= 1
         if (KatSerwaB < MIN_SERV_B) KatSerwaB = MIN_SERV_B
@@ -290,10 +290,10 @@ function CmdLeft() {
         Servo.Servo(SERV_B, KatSerwaB) //baza    -  20->150
         basic.pause(30)
     }
-    LastCmd = CMD_LEFT
+    LastCmd = CMD_RIGHT
 }
 
-function CmdRight() {
+function CmdLeft() {
     for (let i = 0; i < 130; i++) {
         KatSerwaB += 1
         if (KatSerwaB > MAX_SERV_B) KatSerwaB = MAX_SERV_B
@@ -301,7 +301,7 @@ function CmdRight() {
         Servo.Servo(SERV_B, KatSerwaB) //baza    -  20->150
         basic.pause(30)
     }
-    LastCmd = CMD_RIGHT
+    LastCmd = CMD_LEFT
 }
 
 
@@ -323,13 +323,35 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.A, function () {
     if (DebugMode) {
         basic.showString('C')
-        // inicjalizacja funkcja
+        CmdInit()
         basic.clearScreen()
     }
 })
 
 input.onButtonPressed(Button.B, function () {
-    //wolna funkcja
+    //Demo
+    CmdInit()
+    basic.showString('C')
+    CmdClose()
+    basic.showString('U')
+    CmdUp()
+    basic.showString('L')
+    CmdLeft()
+    basic.showString('O')
+    CmdOpen()
+    basic.showString('D')
+    CmdDown()
+    basic.showString('C')
+    CmdClose()
+    basic.showString('U')
+    CmdUp()
+    basic.showString('R')
+    CmdRight()
+    basic.showString('D')
+    CmdDown()
+    basic.showString('O')
+    CmdOpen()
+    basic.clearScreen()
 })
 
 
