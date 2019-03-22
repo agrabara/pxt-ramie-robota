@@ -5,7 +5,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "motor": "github:dfrobot/pxt-motor#32a693485373e4606ee2d533e45d89ea1fae8bf5"
+        "Servo": "github:waveshare/pxt-servo#v1.0.0"
     },
     "files": [
         "README.md",
